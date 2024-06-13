@@ -64,7 +64,7 @@ public class ReqResTests {
             @Feature("ReqRes")
             @Story("Patch the details of an employee")
             public static class ReqResPatchTests {
-                @Description("Patch the recently created employee")
+                @Description("As an API user I want to Patch the recently created employee details")
                 @Severity(SeverityLevel.CRITICAL)
                 public void patchEmployeeDetailsTest() {
                     patchEmployeeResponse().
@@ -81,7 +81,7 @@ public class ReqResTests {
                 @Feature("ReqRes")
                 @Story("Delete Employee")
                 public static class ReqResDeleteTest {
-                    @Description("Delete the recently created employee")
+                    @Description("As an API user I want to delete the recently created employee")
                     @Severity(SeverityLevel.NORMAL)
                     public void deleteEmployeeTest() {
                         deleteEmployeedetailsReponse().

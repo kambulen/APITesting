@@ -2,6 +2,7 @@ package Common;
 
 import io.restassured.response.Response;
 
+import static Common.BasePaths.DogsAPI_baseURL;
 import static Common.BasePaths.ReqRes_baseURL;
 import static Common.ContentTypes.json_contentType;
 import static Common.PayloadBuilder.*;
@@ -38,8 +39,8 @@ public class RequestBuilder {
 
     }
 
-    public static Response updateEmployeeResponse(){
-          Response response = given().
+    public static Response updateEmployeeResponse() {
+        Response response = given().
                 when().
                 body(updateEmployeeObject()).
                 contentType(json_contentType).
@@ -49,11 +50,11 @@ public class RequestBuilder {
                 log().all().
                 extract().response();
 
-          return response;
+        return response;
     }
 
-    public static Response patchEmployeeResponse(){
-           Response response = given().
+    public static Response patchEmployeeResponse() {
+        Response response = given().
                 when().
                 body(patchEmployeeObject()).
                 contentType(json_contentType).
@@ -63,13 +64,58 @@ public class RequestBuilder {
                 log().all().
                 extract().response();
 
-          return response;
+        return response;
     }
 
-     public static Response deleteEmployeedetailsReponse() {
+    public static Response deleteEmployeedetailsReponse() {
         Response response = given().
                 when().
                 delete(ReqRes_baseURL + "/api/users/" + EmployeeID).
+                then().
+                log().
+                all().
+                extract().response();
+
+        return response;
+    }
+
+    public static Response getListsOfAllBreeds() {
+        Response response = given().
+                when().
+                get(DogsAPI_baseURL + "/breeds/list/all").
+                then().
+                log().
+                all().
+                extract().response();
+        return response;
+    }
+
+    public static Response getRandomBreeds() {
+        Response response = given().
+                when().
+                get(DogsAPI_baseURL + "/breeds/image/random").
+                then().
+                log().
+                all().
+                extract().response();
+        return response;
+    }
+
+     public static Response getDogsbyBreeds() {
+        Response response = given().
+                when().
+                get(DogsAPI_baseURL + "/breed/hound/images").
+                then().
+                log().
+                all().
+                extract().response();
+        return response;
+    }
+
+    public static Response getListOfSubBreeds(){
+        Response response = given().
+                when().
+                get(DogsAPI_baseURL + "/breed/hound/list").
                 then().
                 log().
                 all().
