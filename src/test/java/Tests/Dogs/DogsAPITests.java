@@ -1,11 +1,13 @@
 package Tests.Dogs;
 
 import io.qameta.allure.*;
+import org.junit.internal.matchers.StringContains;
 import org.testng.annotations.Test;
 
 import static Common.CommonTestData.*;
 import static Common.RequestBuilder.getListsOfAllBreeds;
 import static Common.RequestBuilder.*;
+import static org.hamcrest.Matchers.containsStringIgnoringCase;
 
 
 @Test
@@ -40,7 +42,7 @@ public class DogsAPITests {
             @Description("As an API user I want to get a list of Dogs by breed")
             @Severity(SeverityLevel.BLOCKER)
 
-            public void getDogsByBreedTest(){
+            public void getDogsByBreedTest() {
                 getDogsbyBreeds().
                         then().
                         assertThat().
@@ -52,11 +54,26 @@ public class DogsAPITests {
                 @Description("As an API user I want to get a list of All Sub-Breeds")
                 @Severity(SeverityLevel.BLOCKER)
 
-                public void getDogsBySubBreed(){
+                public void getDogsBySubBreed() {
                     getListOfSubBreeds().
                             then().
                             assertThat().
                             statusCode(Retrieve_Employee_Status_Code);
+                }
+
+                @Test
+                public static class DogsAPIInvalidURL {
+                    @Description("As an API user I want to get the list of all list using an incorrect URL")
+                    @Severity(SeverityLevel.CRITICAL)
+
+                    public void getDogsListInvalidURl() {
+                        getListsOfAllBreedsNegative().
+                                then().
+                                assertThat().
+                                statusCode(Invalid_URL).
+                                body("status", containsStringIgnoringCase("error"));
+                    }
+
                 }
             }
         }

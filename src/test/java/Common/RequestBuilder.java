@@ -124,4 +124,15 @@ public class RequestBuilder {
         return response;
     }
 
+     public static Response getListsOfAllBreedsNegative() {
+        Response response = given().
+                when().
+                get(DogsAPI_baseURL + "/breedsNoma/list/all").
+                then().
+                log().
+                all().
+                extract().response();
+        return response;
+    }
+
 }
