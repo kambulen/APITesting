@@ -26,6 +26,8 @@ public class DogsAPITests {
     }
 
     @Test
+    @Feature("DogsApi")
+    @Story("Get Random Breeds")
     public static class DogsAPIGetRandomTest {
         @Description("As an API user I want to get list of Random Breeds")
         @Severity(SeverityLevel.CRITICAL)
@@ -38,6 +40,8 @@ public class DogsAPITests {
         }
 
         @Test
+        @Feature("DogsApi")
+        @Story("Get List of Dogs By Breeds")
         public static class DogsAPIGetDogByBreedTest {
             @Description("As an API user I want to get a list of Dogs by breed")
             @Severity(SeverityLevel.BLOCKER)
@@ -50,6 +54,8 @@ public class DogsAPITests {
             }
 
             @Test
+            @Feature("DogsApi")
+            @Story("Get List of Dogs By Sub-Breeds")
             public static class DogsAPIGetSubBreeds {
                 @Description("As an API user I want to get a list of All Sub-Breeds")
                 @Severity(SeverityLevel.BLOCKER)
@@ -62,6 +68,8 @@ public class DogsAPITests {
                 }
 
                 @Test
+                @Feature("DogsApi")
+                @Story("Get List of Dogs Using an incorrect URL")
                 public static class DogsAPIInvalidURL {
                     @Description("As an API user I want to get the list of all list using an incorrect URL")
                     @Severity(SeverityLevel.CRITICAL)
