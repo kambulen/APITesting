@@ -17,7 +17,6 @@ import static org.hamcrest.Matchers.containsStringIgnoringCase;
 public class DogsAPITests {
     @Description("As an API user I want to get a list of all Breeds")
     @Severity(SeverityLevel.CRITICAL)
-
     public void getAllBreedsTest() {
         getListsOfAllBreeds().
                 then().
@@ -25,68 +24,45 @@ public class DogsAPITests {
                 statusCode(Retrieve_Employee_Status_Code);
     }
 
-    @Test
-    @Feature("DogsApi")
-    @Story("Get Random Breeds")
-    public static class DogsAPIGetRandomTest {
-        @Description("As an API user I want to get list of Random Breeds")
-        @Severity(SeverityLevel.CRITICAL)
+    @Description("As an API user I want to get list of Random Breeds")
+    @Severity(SeverityLevel.CRITICAL)
 
-        public void getRandomBreedsTest() {
-            getRandomBreeds().
-                    then().
-                    assertThat().
-                    statusCode(Retrieve_Employee_Status_Code);
-        }
-
-        @Test
-        @Feature("DogsApi")
-        @Story("Get List of Dogs By Breeds")
-        public static class DogsAPIGetDogByBreedTest {
-            @Description("As an API user I want to get a list of Dogs by breed")
-            @Severity(SeverityLevel.BLOCKER)
-
-            public void getDogsByBreedTest() {
-                getDogsbyBreeds().
-                        then().
-                        assertThat().
-                        statusCode(Retrieve_Employee_Status_Code);
-            }
-
-            @Test
-            @Feature("DogsApi")
-            @Story("Get List of Dogs By Sub-Breeds")
-            public static class DogsAPIGetSubBreeds {
-                @Description("As an API user I want to get a list of All Sub-Breeds")
-                @Severity(SeverityLevel.BLOCKER)
-
-                public void getDogsBySubBreed() {
-                    getListOfSubBreeds().
-                            then().
-                            assertThat().
-                            statusCode(Retrieve_Employee_Status_Code);
-                }
-
-                @Test
-                @Feature("DogsApi")
-                @Story("Get List of Dogs Using an incorrect URL")
-                public static class DogsAPIInvalidURL {
-                    @Description("As an API user I want to get the list of all list using an incorrect URL")
-                    @Severity(SeverityLevel.CRITICAL)
-
-                    public void getDogsListInvalidURl() {
-                        getListsOfAllBreedsNegative().
-                                then().
-                                assertThat().
-                                statusCode(Invalid_URL).
-                                body("status", containsStringIgnoringCase("error"));
-                    }
-
-                }
-            }
-        }
-
+    public void getRandomBreedsTest() {
+        getRandomBreeds().
+                then().
+                assertThat().
+                statusCode(Retrieve_Employee_Status_Code);
     }
 
+    @Description("As an API user I want to get a list of Dogs by breed")
+    @Severity(SeverityLevel.BLOCKER)
+
+    public void getDogsByBreedTest() {
+        getDogsbyBreeds().
+                then().
+                assertThat().
+                statusCode(Retrieve_Employee_Status_Code);
+    }
+
+    @Description("As an API user I want to get a list of All Sub-Breeds")
+    @Severity(SeverityLevel.BLOCKER)
+
+    public void getDogsBySubBreed() {
+        getListOfSubBreeds().
+                then().
+                assertThat().
+                statusCode(Retrieve_Employee_Status_Code);
+    }
+
+    @Description("As an API user I want to get the list of all list using an incorrect URL")
+    @Severity(SeverityLevel.CRITICAL)
+
+    public void getDogsListInvalidURl() {
+        getListsOfAllBreedsNegative().
+                then().
+                assertThat().
+                statusCode(Invalid_URL).
+                body("status", containsStringIgnoringCase("error"));
+    }
 
 }
