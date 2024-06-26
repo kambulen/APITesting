@@ -2,9 +2,10 @@ package Common;
 
 import io.restassured.response.Response;
 
-import static Common.BasePaths.DogsAPI_baseURL;
-import static Common.BasePaths.ReqRes_baseURL;
+
+import static Common.BasePaths.*;
 import static Common.ContentTypes.json_contentType;
+import static Common.Headers.getWeatherHeaders;
 import static Common.PayloadBuilder.*;
 import static io.restassured.RestAssured.*;
 
@@ -135,4 +136,17 @@ public class RequestBuilder {
         return response;
     }
 
+    public static Response registerAWeatherstation() {
+        Response response = given().
+                headers(getWeatherHeaders()).
+                when().
+                body(registerStationObject()).
+                contentType(json_contentType).
+                log().all().
+                post(WeatherAPI_baseURL + "/data/3.0/stations").
+                then().
+                log().all().
+                extract().response();
+        return response;
+    }
 }
