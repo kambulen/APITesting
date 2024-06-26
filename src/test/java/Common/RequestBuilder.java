@@ -139,9 +139,10 @@ public class RequestBuilder {
 
     public static Response registerAWeatherstation() {
         Response response = given().
+                queryParam("appid","ca497274c14aef3abcab96bf314e8736").
                 headers(getWeatherHeaders()).
-                when().
                 body(registerStationObject()).
+                when().
                 contentType(json_contentType).
                 log().all().
                 post(WeatherAPI_baseURL + "/data/3.0/stations").

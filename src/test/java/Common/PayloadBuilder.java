@@ -33,9 +33,9 @@ public class PayloadBuilder {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("external_id", "SF_TEST003");
         jsonObject.put("name", "D-Town, Zone 20");
-        jsonObject.put("latitude", "37.76");
-        jsonObject.put("longitude", "-122.43");
-        jsonObject.put("altitude", "150");
+        jsonObject.put("latitude", 37.76);
+        jsonObject.put("longitude", -122.43);
+        jsonObject.put("altitude", 150);
 
         return jsonObject;
 
