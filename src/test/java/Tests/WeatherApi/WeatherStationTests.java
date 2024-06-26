@@ -4,8 +4,7 @@ import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
 import static Common.BasePaths.WeatherAPI_baseURL;
-import static Common.CommonTestData.Create_Success_Status_Code;
-import static Common.CommonTestData.Retrieve_Data_Status_Code;
+import static Common.CommonTestData.*;
 import static Common.RequestBuilder.*;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -64,4 +63,13 @@ public class WeatherStationTests {
                 body("latitude", notNullValue());
     }
 
+    @Description("As an API user I want to delete the recently created station")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(dependsOnMethods = "updateStationDetailUsingID")
+    public void deleteStation() {
+        deleteStationID().
+                then().
+                assertThat().
+                statusCode(Delete_Employee_Status_code);
+    }
 }

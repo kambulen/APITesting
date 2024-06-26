@@ -185,5 +185,18 @@ public class RequestBuilder {
         return response;
     }
 
+    public static Response deleteStationID() {
+        Response response = given().
+                queryParam("appid", "ca497274c14aef3abcab96bf314e8736").
+                headers(getWeatherHeaders()).
+                when().
+                delete(WeatherAPI_baseURL +"/data/3.0/stations/"+stationID).
+                then().
+                log().
+                all().
+                extract().response();
 
+        return response;
+
+    }
 }
