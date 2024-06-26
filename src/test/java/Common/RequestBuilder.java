@@ -102,7 +102,7 @@ public class RequestBuilder {
         return response;
     }
 
-     public static Response getDogsbyBreeds() {
+    public static Response getDogsbyBreeds() {
         Response response = given().
                 when().
                 get(DogsAPI_baseURL + "/breed/hound/images").
@@ -113,7 +113,7 @@ public class RequestBuilder {
         return response;
     }
 
-    public static Response getListOfSubBreeds(){
+    public static Response getListOfSubBreeds() {
         Response response = given().
                 when().
                 get(DogsAPI_baseURL + "/breed/hound/list").
@@ -125,7 +125,7 @@ public class RequestBuilder {
         return response;
     }
 
-     public static Response getListsOfAllBreedsNegative() {
+    public static Response getListsOfAllBreedsNegative() {
         Response response = given().
                 when().
                 get(DogsAPI_baseURL + "/breedsNoma/list/all").
@@ -138,15 +138,16 @@ public class RequestBuilder {
 
     public static Response registerAWeatherstation() {
         Response response = given().
-                headers(getWeatherHeaders()).
                 when().
+                headers(getWeatherHeaders()).
                 body(registerStationObject()).
                 contentType(json_contentType).
-                log().all().
                 post(WeatherAPI_baseURL + "/data/3.0/stations").
                 then().
-                log().all().
-                extract().response();
+                log().
+                all().
+                extract().
+                response();
         return response;
     }
 }
