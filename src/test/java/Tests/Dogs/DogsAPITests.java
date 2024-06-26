@@ -1,7 +1,6 @@
 package Tests.Dogs;
 
 import io.qameta.allure.*;
-import org.junit.internal.matchers.StringContains;
 import org.testng.annotations.Test;
 
 import static Common.CommonTestData.*;
@@ -21,7 +20,7 @@ public class DogsAPITests {
         getListsOfAllBreeds().
                 then().
                 assertThat().
-                statusCode(Retrieve_Employee_Status_Code);
+                statusCode(Retrieve_Data_Status_Code);
     }
 
     @Description("As an API user I want to get list of Random Breeds")
@@ -31,7 +30,7 @@ public class DogsAPITests {
         getRandomBreeds().
                 then().
                 assertThat().
-                statusCode(Retrieve_Employee_Status_Code);
+                statusCode(Retrieve_Data_Status_Code);
     }
 
     @Description("As an API user I want to get a list of Dogs by breed")
@@ -41,7 +40,7 @@ public class DogsAPITests {
         getDogsbyBreeds().
                 then().
                 assertThat().
-                statusCode(Retrieve_Employee_Status_Code);
+                statusCode(Retrieve_Data_Status_Code);
     }
 
     @Description("As an API user I want to get a list of All Sub-Breeds")
@@ -51,7 +50,7 @@ public class DogsAPITests {
         getListOfSubBreeds().
                 then().
                 assertThat().
-                statusCode(Retrieve_Employee_Status_Code);
+                statusCode(Retrieve_Data_Status_Code);
     }
 
     @Description("As an API user I want to get the list of all list using an incorrect URL")

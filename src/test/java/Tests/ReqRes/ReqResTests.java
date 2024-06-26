@@ -33,7 +33,7 @@ public class ReqResTests {
         getEmployeedetailsReponse().
                 then().
                 assertThat().
-                statusCode(Retrieve_Employee_Status_Code).
+                statusCode(Retrieve_Data_Status_Code).
                 body("data.id", notNullValue()).
                 body("data.name", notNullValue());
     }
@@ -44,7 +44,7 @@ public class ReqResTests {
         updateEmployeeResponse().
                 then().
                 assertThat().
-                statusCode(Retrieve_Employee_Status_Code).
+                statusCode(Retrieve_Data_Status_Code).
                 body("job", notNullValue()).
                 body("name", notNullValue()).
                 body("surname", notNullValue());
@@ -56,7 +56,7 @@ public class ReqResTests {
         patchEmployeeResponse().
                 then().
                 assertThat().
-                statusCode(Retrieve_Employee_Status_Code).
+                statusCode(Retrieve_Data_Status_Code).
                 body("name", containsStringIgnoringCase("morpheuspatch")).
                 body("job", containsStringIgnoringCase("zion residentpatch")).
                 body("updatedAt", notNullValue());

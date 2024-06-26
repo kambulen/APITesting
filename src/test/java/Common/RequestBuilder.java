@@ -5,7 +5,6 @@ import io.restassured.response.Response;
 
 import static Common.BasePaths.*;
 import static Common.ContentTypes.json_contentType;
-import static Common.Headers.WeatherAPI_KEY;
 import static Common.Headers.getWeatherHeaders;
 import static Common.PayloadBuilder.*;
 import static io.restassured.RestAssured.*;
@@ -103,7 +102,7 @@ public class RequestBuilder {
         return response;
     }
 
-     public static Response getDogsbyBreeds() {
+    public static Response getDogsbyBreeds() {
         Response response = given().
                 when().
                 get(DogsAPI_baseURL + "/breed/hound/images").
@@ -114,7 +113,7 @@ public class RequestBuilder {
         return response;
     }
 
-    public static Response getListOfSubBreeds(){
+    public static Response getListOfSubBreeds() {
         Response response = given().
                 when().
                 get(DogsAPI_baseURL + "/breed/hound/list").
@@ -126,7 +125,7 @@ public class RequestBuilder {
         return response;
     }
 
-     public static Response getListsOfAllBreedsNegative() {
+    public static Response getListsOfAllBreedsNegative() {
         Response response = given().
                 when().
                 get(DogsAPI_baseURL + "/breedsNoma/list/all").
@@ -137,9 +136,11 @@ public class RequestBuilder {
         return response;
     }
 
+    public static String stationID;
+
     public static Response registerAWeatherstation() {
         Response response = given().
-                queryParam("appid","ca497274c14aef3abcab96bf314e8736").
+                queryParam("appid", "ca497274c14aef3abcab96bf314e8736").
                 headers(getWeatherHeaders()).
                 body(registerStationObject()).
                 when().
@@ -148,7 +149,41 @@ public class RequestBuilder {
                 post(WeatherAPI_baseURL + "/data/3.0/stations").
                 then().
                 log().all().
-                extract().response();
+                extract().
+                response();
+        stationID = response.jsonPath().getString("ID");
         return response;
     }
+
+    public static Response getStationByID() {
+        Response response = given().
+                queryParam("appid", "ca497274c14aef3abcab96bf314e8736").
+                headers(getWeatherHeaders()).
+                when().
+                get(WeatherAPI_baseURL + "/data/3.0/stations/" + stationID).
+                then().
+                log().
+                all().
+                extract().response();
+
+        return response;
+    }
+
+    public static Response updateStationDetails() {
+        Response response = given().
+                queryParam("appid", "ca497274c14aef3abcab96bf314e8736").
+                headers(getWeatherHeaders()).
+                body(registerStationObject()).
+                when().
+                contentType(json_contentType).
+                log().all().
+                put(WeatherAPI_baseURL + "/data/3.0/stations/" + stationID).
+                then().
+                log().all().
+                extract().
+                response();
+        return response;
+    }
+
+
 }

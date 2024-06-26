@@ -39,7 +39,18 @@ public class PayloadBuilder {
 
         return jsonObject;
 
-
     }
 
+    public static JSONObject updateStationObject() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("external_id", "SF_TEST003");
+        jsonObject.put("name", "Jozi Gauteng");
+        jsonObject.put("latitude", 27.90887);
+        jsonObject.put("longitude", -26.09550);
+        jsonObject.put("altitude", 150);
+
+        return jsonObject;
+
+
+    }
 }
